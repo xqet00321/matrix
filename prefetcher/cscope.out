@@ -1,0 +1,4996 @@
+cscope 15 $HOME/work/pref/prefetcher -q 0000000152 0000023896
+	@impl/avx_prefetch_transpose.c
+
+1 
+	~"m©rix.h
+"
+
+2 
+	~<¡dio.h
+>
+
+3 
+	~<¡dlib.h
+>
+
+4 
+	~<as£¹.h
+>
+
+5 
+	~<immšŒš.h
+>
+
+7 
+	#PRIV
+(
+x
+) \
+
+8 ((*è((
+x
+)->
+´iv
+))
+
+	)
+
+10 * 
+	$m©rix_®loc
+(
+row
+, 
+cÞ
+)
+
+12 *
+v®ues
+ = (*)
+	`ÿÎoc
+(
+row
+ * 
+cÞ
+, ());
+
+13  
+v®ues
+;
+
+14 
+	}
+}
+
+16 
+M©rix
+* 
+	$ü—‹
+(
+row
+, 
+cÞ
+)
+
+18 
+M©rix
+ *
+m©rix
+ = (M©rix*)
+	`m®loc
+((Matrix));
+
+19 
+m©rix
+->
+row
+ =„ow;
+
+20 
+m©rix
+->
+cÞ
+ = col;
+
+21 
+m©rix
+->
+´iv
+ = 
+	`m©rix_®loc
+(
+row
+, 
+cÞ
+);
+
+22  
+m©rix
+;
+
+23 
+	}
+}
+
+25 
+	$assign
+(
+M©rix
+ *
+thiz
+, * 
+d©a
+, 
+d©a_size
+)
+
+27 
+	`as£¹
+(
+thiz
+->
+row
+ *hiz->
+cÞ
+ =ð
+d©a_size
+ &&
+
+30 
+i
+ = 0; i < 
+thiz
+->
+row
+; i++)
+
+31 
+j
+ = 0; j < 
+thiz
+->
+cÞ
+; j++)
+
+32 
+	`PRIV
+(
+thiz
+)[
+i
+*thiz->
+cÞ
+ + 
+j
+] = 
+d©a
+[i*thiz->col + j];
+
+33 
+	}
+}
+
+35 
+boÞ
+ 
+	$equ®
+(cÚ¡ 
+M©rix
+ *
+l
+, cÚ¡ M©rix *
+r
+)
+
+37 cÚ¡ 
+•sžÚ
+ = 1 / 10000.0;
+
+39 
+	`as£¹
+(
+l
+->
+row
+ =ð
+r
+->row &&†->
+cÞ
+ ==„->col && "Matrix size is different");
+
+40 
+i
+ = 0; i < 
+l
+->
+row
+; i++)
+
+41 
+j
+ = 0; j < 
+l
+->
+cÞ
+; j++)
+
+42 ià(
+	`PRIV
+(
+l
+)[
+i
+ *†->
+cÞ
+ + 
+j
+] + 
+•sžÚ
+ < PRIV(
+r
+)[i *„->col + j] ||
+
+43 
+	`PRIV
+(
+r
+)[
+i
+ *„->
+cÞ
+ + 
+j
+] + 
+•sžÚ
+ < PRIV(
+l
+)[i *†->col + j])
+
+44  
+çl£
+;
+
+45  
+Œue
+;
+
+46 
+	}
+}
+
+48 
+	$avx_´eãtch_Œª¥o£
+(
+M©rix
+ *
+d¡
+, cÚ¡ M©rix *
+¤c
+)
+
+50 
+	`as£¹
+(
+d¡
+->
+cÞ
+ =ð
+¤c
+->cÞ && d¡->
+row
+ == src->row
+
+53 
+w
+ = 
+d¡
+->
+cÞ
+;
+
+54 
+h
+ = 
+d¡
+->
+row
+;
+
+56 
+x
+ = 0; x < 
+w
+; x += 8) {
+
+57 
+y
+ = 0; y < 
+h
+; y += 8) {
+
+58 
+	#AVXPFDIST
+ 16
+
+	)
+
+59 
+	`_mm_´eãtch
+(
+	`PRIV
+(
+¤c
+)+(
+y
+ + 
+AVXPFDIST
+ + 0è*
+w
+ + 
+x
+, 
+_MM_HINT_T1
+);
+
+60 
+	`_mm_´eãtch
+(
+	`PRIV
+(
+¤c
+)+(
+y
+ + 
+AVXPFDIST
+ + 1è*
+w
+ + 
+x
+, 
+_MM_HINT_T1
+);
+
+61 
+	`_mm_´eãtch
+(
+	`PRIV
+(
+¤c
+)+(
+y
+ + 
+AVXPFDIST
+ + 2è*
+w
+ + 
+x
+, 
+_MM_HINT_T1
+);
+
+62 
+	`_mm_´eãtch
+(
+	`PRIV
+(
+¤c
+)+(
+y
+ + 
+AVXPFDIST
+ + 3è*
+w
+ + 
+x
+, 
+_MM_HINT_T1
+);
+
+63 
+	`_mm_´eãtch
+(
+	`PRIV
+(
+¤c
+)+(
+y
+ + 
+AVXPFDIST
+ + 4è*
+w
+ + 
+x
+, 
+_MM_HINT_T1
+);
+
+64 
+	`_mm_´eãtch
+(
+	`PRIV
+(
+¤c
+)+(
+y
+ + 
+AVXPFDIST
+ + 5è*
+w
+ + 
+x
+, 
+_MM_HINT_T1
+);
+
+65 
+	`_mm_´eãtch
+(
+	`PRIV
+(
+¤c
+)+(
+y
+ + 
+AVXPFDIST
+ + 6è*
+w
+ + 
+x
+, 
+_MM_HINT_T1
+);
+
+66 
+	`_mm_´eãtch
+(
+	`PRIV
+(
+¤c
+)+(
+y
+ + 
+AVXPFDIST
+ + 7è*
+w
+ + 
+x
+, 
+_MM_HINT_T1
+);
+
+68 
+__m256i
+ 
+I0
+ = 
+	`_mm256_lßdu_si256
+((__m256˜*)(
+	`PRIV
+(
+¤c
+è+ (
+y
+ + 0è* 
+w
+ + 
+x
+));
+
+69 
+__m256i
+ 
+I1
+ = 
+	`_mm256_lßdu_si256
+((__m256˜*)(
+	`PRIV
+(
+¤c
+è+ (
+y
+ + 1è* 
+w
+ + 
+x
+));
+
+70 
+__m256i
+ 
+I2
+ = 
+	`_mm256_lßdu_si256
+((__m256˜*)(
+	`PRIV
+(
+¤c
+è+ (
+y
+ + 2è* 
+w
+ + 
+x
+));
+
+71 
+__m256i
+ 
+I3
+ = 
+	`_mm256_lßdu_si256
+((__m256˜*)(
+	`PRIV
+(
+¤c
+è+ (
+y
+ + 3è* 
+w
+ + 
+x
+));
+
+72 
+__m256i
+ 
+I4
+ = 
+	`_mm256_lßdu_si256
+((__m256˜*)(
+	`PRIV
+(
+¤c
+è+ (
+y
+ + 4è* 
+w
+ + 
+x
+));
+
+73 
+__m256i
+ 
+I5
+ = 
+	`_mm256_lßdu_si256
+((__m256˜*)(
+	`PRIV
+(
+¤c
+è+ (
+y
+ + 5è* 
+w
+ + 
+x
+));
+
+74 
+__m256i
+ 
+I6
+ = 
+	`_mm256_lßdu_si256
+((__m256˜*)(
+	`PRIV
+(
+¤c
+è+ (
+y
+ + 6è* 
+w
+ + 
+x
+));
+
+75 
+__m256i
+ 
+I7
+ = 
+	`_mm256_lßdu_si256
+((__m256˜*)(
+	`PRIV
+(
+¤c
+è+ (
+y
+ + 7è* 
+w
+ + 
+x
+));
+
+77 
+__m256i
+ 
+T0
+ = 
+	`_mm256_uÅacklo_•i32
+(
+I0
+, 
+I1
+);
+
+78 
+__m256i
+ 
+T1
+ = 
+	`_mm256_uÅacklo_•i32
+(
+I2
+, 
+I3
+);
+
+79 
+__m256i
+ 
+T2
+ = 
+	`_mm256_uÅackhi_•i32
+(
+I0
+, 
+I1
+);
+
+80 
+__m256i
+ 
+T3
+ = 
+	`_mm256_uÅackhi_•i32
+(
+I2
+, 
+I3
+);
+
+81 
+__m256i
+ 
+T4
+ = 
+	`_mm256_uÅacklo_•i32
+(
+I4
+, 
+I5
+);
+
+82 
+__m256i
+ 
+T5
+ = 
+	`_mm256_uÅacklo_•i32
+(
+I6
+, 
+I7
+);
+
+83 
+__m256i
+ 
+T6
+ = 
+	`_mm256_uÅackhi_•i32
+(
+I4
+, 
+I5
+);
+
+84 
+__m256i
+ 
+T7
+ = 
+	`_mm256_uÅackhi_•i32
+(
+I6
+, 
+I7
+);
+
+86 
+I0
+ = 
+	`_mm256_uÅacklo_•i64
+(
+T0
+, 
+T1
+);
+
+87 
+I1
+ = 
+	`_mm256_uÅackhi_•i64
+(
+T0
+, 
+T1
+);
+
+88 
+I2
+ = 
+	`_mm256_uÅacklo_•i64
+(
+T2
+, 
+T3
+);
+
+89 
+I3
+ = 
+	`_mm256_uÅackhi_•i64
+(
+T2
+, 
+T3
+);
+
+90 
+I4
+ = 
+	`_mm256_uÅacklo_•i64
+(
+T4
+, 
+T5
+);
+
+91 
+I5
+ = 
+	`_mm256_uÅackhi_•i64
+(
+T4
+, 
+T5
+);
+
+92 
+I6
+ = 
+	`_mm256_uÅacklo_•i64
+(
+T6
+, 
+T7
+);
+
+93 
+I7
+ = 
+	`_mm256_uÅackhi_•i64
+(
+T6
+, 
+T7
+);
+
+95 
+T0
+ = 
+	`_mm256_³rmu‹2x128_si256
+(
+I0
+, 
+I4
+, 0x20);
+
+96 
+T1
+ = 
+	`_mm256_³rmu‹2x128_si256
+(
+I1
+, 
+I5
+, 0x20);
+
+97 
+T2
+ = 
+	`_mm256_³rmu‹2x128_si256
+(
+I2
+, 
+I6
+, 0x20);
+
+98 
+T3
+ = 
+	`_mm256_³rmu‹2x128_si256
+(
+I3
+, 
+I7
+, 0x20);
+
+99 
+T4
+ = 
+	`_mm256_³rmu‹2x128_si256
+(
+I0
+, 
+I4
+, 0x31);
+
+100 
+T5
+ = 
+	`_mm256_³rmu‹2x128_si256
+(
+I1
+, 
+I5
+, 0x31);
+
+101 
+T6
+ = 
+	`_mm256_³rmu‹2x128_si256
+(
+I2
+, 
+I6
+, 0x31);
+
+102 
+T7
+ = 
+	`_mm256_³rmu‹2x128_si256
+(
+I3
+, 
+I7
+, 0x31);
+
+104 
+	`_mm256_¡Üeu_si256
+((
+__m256i
+ *)(
+	`PRIV
+(
+d¡
+è+ ((
+x
+ + 0è* 
+h
+è+ 
+y
+), 
+T0
+);
+
+105 
+	`_mm256_¡Üeu_si256
+((
+__m256i
+ *)(
+	`PRIV
+(
+d¡
+è+ ((
+x
+ + 1è* 
+h
+è+ 
+y
+), 
+T1
+);
+
+106 
+	`_mm256_¡Üeu_si256
+((
+__m256i
+ *)(
+	`PRIV
+(
+d¡
+è+ ((
+x
+ + 2è* 
+h
+è+ 
+y
+), 
+T2
+);
+
+107 
+	`_mm256_¡Üeu_si256
+((
+__m256i
+ *)(
+	`PRIV
+(
+d¡
+è+ ((
+x
+ + 3è* 
+h
+è+ 
+y
+), 
+T3
+);
+
+108 
+	`_mm256_¡Üeu_si256
+((
+__m256i
+ *)(
+	`PRIV
+(
+d¡
+è+ ((
+x
+ + 4è* 
+h
+è+ 
+y
+), 
+T4
+);
+
+109 
+	`_mm256_¡Üeu_si256
+((
+__m256i
+ *)(
+	`PRIV
+(
+d¡
+è+ ((
+x
+ + 5è* 
+h
+è+ 
+y
+), 
+T5
+);
+
+110 
+	`_mm256_¡Üeu_si256
+((
+__m256i
+ *)(
+	`PRIV
+(
+d¡
+è+ ((
+x
+ + 6è* 
+h
+è+ 
+y
+), 
+T6
+);
+
+111 
+	`_mm256_¡Üeu_si256
+((
+__m256i
+ *)(
+	`PRIV
+(
+d¡
+è+ ((
+x
+ + 7è* 
+h
+è+ 
+y
+), 
+T7
+);
+
+115 
+	}
+}
+
+117 
+	$´šŽn
+(
+M©rix
+ *
+thiz
+)
+
+119 
+cÞ
+ = 
+thiz
+->col;
+
+120 
+i
+ = 0; i < 
+thiz
+->
+row
+; i++) {
+
+121 
+j
+ = 0; j < 
+thiz
+->
+cÞ
+; j++) {
+
+122 
+	`´štf
+("%2g ", 
+	`PRIV
+(
+thiz
+)[
+i
+*
+cÞ
+ + 
+j
+]);
+
+124 
+	`´štf
+("\n");
+
+126 
+	`´štf
+("\n");
+
+127 
+	}
+}
+
+129 
+M©rixAlgo
+ 
+	gAvxP»ãtchM©rixProvid”
+ = {
+
+130 .
+ü—‹
+ = create,
+
+131 .
+	gassign
+ = 
+assign
+,
+
+132 .
+	gequ®
+ = 
+equ®
+,
+
+133 .
+	gŒª¥o£
+ = 
+avx_´eãtch_Œª¥o£
+,
+
+134 .
+	g´šŽn
+ = 
+´šŽn
+,
+
+	@impl/avx_transpose.c
+
+1 
+	~"m©rix.h
+"
+
+2 
+	~<¡dio.h
+>
+
+3 
+	~<¡dlib.h
+>
+
+4 
+	~<as£¹.h
+>
+
+5 
+	~<immšŒš.h
+>
+
+7 
+	#PRIV
+(
+x
+) \
+
+8 ((*è((
+x
+)->
+´iv
+))
+
+	)
+
+10 * 
+	$m©rix_®loc
+(
+row
+, 
+cÞ
+)
+
+12 *
+v®ues
+ = (*)
+	`ÿÎoc
+(
+row
+ * 
+cÞ
+, ());
+
+13  
+v®ues
+;
+
+14 
+	}
+}
+
+16 
+M©rix
+* 
+	$ü—‹
+(
+row
+, 
+cÞ
+)
+
+18 
+M©rix
+ *
+m©rix
+ = (M©rix*)
+	`m®loc
+((Matrix));
+
+19 
+m©rix
+->
+row
+ =„ow;
+
+20 
+m©rix
+->
+cÞ
+ = col;
+
+21 
+m©rix
+->
+´iv
+ = 
+	`m©rix_®loc
+(
+row
+, 
+cÞ
+);
+
+22  
+m©rix
+;
+
+23 
+	}
+}
+
+25 
+	$assign
+(
+M©rix
+ *
+thiz
+, * 
+d©a
+, 
+d©a_size
+)
+
+27 
+	`as£¹
+(
+thiz
+->
+row
+ *hiz->
+cÞ
+ =ð
+d©a_size
+ &&
+
+30 
+i
+ = 0; i < 
+thiz
+->
+row
+; i++)
+
+31 
+j
+ = 0; j < 
+thiz
+->
+cÞ
+; j++)
+
+32 
+	`PRIV
+(
+thiz
+)[
+i
+*thiz->
+cÞ
+ + 
+j
+] = 
+d©a
+[i*thiz->col + j];
+
+33 
+	}
+}
+
+35 
+boÞ
+ 
+	$equ®
+(cÚ¡ 
+M©rix
+ *
+l
+, cÚ¡ M©rix *
+r
+)
+
+37 cÚ¡ 
+•sžÚ
+ = 1 / 10000.0;
+
+39 
+	`as£¹
+(
+l
+->
+row
+ =ð
+r
+->row &&†->
+cÞ
+ ==„->col && "Matrix size is different");
+
+40 
+i
+ = 0; i < 
+l
+->
+row
+; i++)
+
+41 
+j
+ = 0; j < 
+l
+->
+cÞ
+; j++)
+
+42 ià(
+	`PRIV
+(
+l
+)[
+i
+ *†->
+cÞ
+ + 
+j
+] + 
+•sžÚ
+ < PRIV(
+r
+)[i *„->col + j] ||
+
+43 
+	`PRIV
+(
+r
+)[
+i
+ *„->
+cÞ
+ + 
+j
+] + 
+•sžÚ
+ < PRIV(
+l
+)[i *†->col + j])
+
+44  
+çl£
+;
+
+45  
+Œue
+;
+
+46 
+	}
+}
+
+48 
+	$avx_Œª¥o£
+(
+M©rix
+ *
+d¡
+, cÚ¡ M©rix *
+¤c
+)
+
+50 
+	`as£¹
+(
+d¡
+->
+cÞ
+ =ð
+¤c
+->cÞ && d¡->
+row
+ == src->row
+
+53 
+w
+ = 
+d¡
+->
+cÞ
+;
+
+54 
+h
+ = 
+d¡
+->
+row
+;
+
+55 
+x
+ = 0; x < 
+w
+; x += 8) {
+
+56 
+y
+ = 0; y < 
+h
+; y += 8) {
+
+57 
+__m256i
+ 
+I0
+ = 
+	`_mm256_lddqu_si256
+((__m256˜*)(
+	`PRIV
+(
+¤c
+è+ (
+y
+ + 0è* 
+w
+ + 
+x
+));
+
+58 
+__m256i
+ 
+I1
+ = 
+	`_mm256_lddqu_si256
+((__m256˜*)(
+	`PRIV
+(
+¤c
+è+ (
+y
+ + 1è* 
+w
+ + 
+x
+));
+
+59 
+__m256i
+ 
+I2
+ = 
+	`_mm256_lddqu_si256
+((__m256˜*)(
+	`PRIV
+(
+¤c
+è+ (
+y
+ + 2è* 
+w
+ + 
+x
+));
+
+60 
+__m256i
+ 
+I3
+ = 
+	`_mm256_lddqu_si256
+((__m256˜*)(
+	`PRIV
+(
+¤c
+è+ (
+y
+ + 3è* 
+w
+ + 
+x
+));
+
+61 
+__m256i
+ 
+I4
+ = 
+	`_mm256_lddqu_si256
+((__m256˜*)(
+	`PRIV
+(
+¤c
+è+ (
+y
+ + 4è* 
+w
+ + 
+x
+));
+
+62 
+__m256i
+ 
+I5
+ = 
+	`_mm256_lddqu_si256
+((__m256˜*)(
+	`PRIV
+(
+¤c
+è+ (
+y
+ + 5è* 
+w
+ + 
+x
+));
+
+63 
+__m256i
+ 
+I6
+ = 
+	`_mm256_lddqu_si256
+((__m256˜*)(
+	`PRIV
+(
+¤c
+è+ (
+y
+ + 6è* 
+w
+ + 
+x
+));
+
+64 
+__m256i
+ 
+I7
+ = 
+	`_mm256_lddqu_si256
+((__m256˜*)(
+	`PRIV
+(
+¤c
+è+ (
+y
+ + 7è* 
+w
+ + 
+x
+));
+
+65 
+__m256i
+ 
+T0
+ = 
+	`_mm256_uÅacklo_•i32
+(
+I0
+, 
+I1
+);
+
+66 
+__m256i
+ 
+T1
+ = 
+	`_mm256_uÅacklo_•i32
+(
+I2
+, 
+I3
+);
+
+67 
+__m256i
+ 
+T2
+ = 
+	`_mm256_uÅackhi_•i32
+(
+I0
+, 
+I1
+);
+
+68 
+__m256i
+ 
+T3
+ = 
+	`_mm256_uÅackhi_•i32
+(
+I2
+, 
+I3
+);
+
+69 
+__m256i
+ 
+T4
+ = 
+	`_mm256_uÅacklo_•i32
+(
+I4
+, 
+I5
+);
+
+70 
+__m256i
+ 
+T5
+ = 
+	`_mm256_uÅacklo_•i32
+(
+I6
+, 
+I7
+);
+
+71 
+__m256i
+ 
+T6
+ = 
+	`_mm256_uÅackhi_•i32
+(
+I4
+, 
+I5
+);
+
+72 
+__m256i
+ 
+T7
+ = 
+	`_mm256_uÅackhi_•i32
+(
+I6
+, 
+I7
+);
+
+73 
+I0
+ = 
+	`_mm256_uÅacklo_•i64
+(
+T0
+, 
+T1
+);
+
+74 
+I1
+ = 
+	`_mm256_uÅackhi_•i64
+(
+T0
+, 
+T1
+);
+
+75 
+I2
+ = 
+	`_mm256_uÅacklo_•i64
+(
+T2
+, 
+T3
+);
+
+76 
+I3
+ = 
+	`_mm256_uÅackhi_•i64
+(
+T2
+, 
+T3
+);
+
+77 
+I4
+ = 
+	`_mm256_uÅacklo_•i64
+(
+T4
+, 
+T5
+);
+
+78 
+I5
+ = 
+	`_mm256_uÅackhi_•i64
+(
+T4
+, 
+T5
+);
+
+79 
+I6
+ = 
+	`_mm256_uÅacklo_•i64
+(
+T6
+, 
+T7
+);
+
+80 
+I7
+ = 
+	`_mm256_uÅackhi_•i64
+(
+T6
+, 
+T7
+);
+
+82 
+T0
+ = 
+	`_mm256_³rmu‹2x128_si256
+(
+I0
+, 
+I4
+, 0x20);
+
+83 
+T1
+ = 
+	`_mm256_³rmu‹2x128_si256
+(
+I1
+, 
+I5
+, 0x20);
+
+84 
+T2
+ = 
+	`_mm256_³rmu‹2x128_si256
+(
+I2
+, 
+I6
+, 0x20);
+
+85 
+T3
+ = 
+	`_mm256_³rmu‹2x128_si256
+(
+I3
+, 
+I7
+, 0x20);
+
+86 
+T4
+ = 
+	`_mm256_³rmu‹2x128_si256
+(
+I0
+, 
+I4
+, 0x31);
+
+87 
+T5
+ = 
+	`_mm256_³rmu‹2x128_si256
+(
+I1
+, 
+I5
+, 0x31);
+
+88 
+T6
+ = 
+	`_mm256_³rmu‹2x128_si256
+(
+I2
+, 
+I6
+, 0x31);
+
+89 
+T7
+ = 
+	`_mm256_³rmu‹2x128_si256
+(
+I3
+, 
+I7
+, 0x31);
+
+91 
+	`_mm256_¡Üeu_si256
+((
+__m256i
+ *)(
+	`PRIV
+(
+d¡
+è+ ((
+x
+ + 0è* 
+h
+è+ 
+y
+), 
+T0
+);
+
+92 
+	`_mm256_¡Üeu_si256
+((
+__m256i
+ *)(
+	`PRIV
+(
+d¡
+è+ ((
+x
+ + 1è* 
+h
+è+ 
+y
+), 
+T1
+);
+
+93 
+	`_mm256_¡Üeu_si256
+((
+__m256i
+ *)(
+	`PRIV
+(
+d¡
+è+ ((
+x
+ + 2è* 
+h
+è+ 
+y
+), 
+T2
+);
+
+94 
+	`_mm256_¡Üeu_si256
+((
+__m256i
+ *)(
+	`PRIV
+(
+d¡
+è+ ((
+x
+ + 3è* 
+h
+è+ 
+y
+), 
+T3
+);
+
+95 
+	`_mm256_¡Üeu_si256
+((
+__m256i
+ *)(
+	`PRIV
+(
+d¡
+è+ ((
+x
+ + 4è* 
+h
+è+ 
+y
+), 
+T4
+);
+
+96 
+	`_mm256_¡Üeu_si256
+((
+__m256i
+ *)(
+	`PRIV
+(
+d¡
+è+ ((
+x
+ + 5è* 
+h
+è+ 
+y
+), 
+T5
+);
+
+97 
+	`_mm256_¡Üeu_si256
+((
+__m256i
+ *)(
+	`PRIV
+(
+d¡
+è+ ((
+x
+ + 6è* 
+h
+è+ 
+y
+), 
+T6
+);
+
+98 
+	`_mm256_¡Üeu_si256
+((
+__m256i
+ *)(
+	`PRIV
+(
+d¡
+è+ ((
+x
+ + 7è* 
+h
+è+ 
+y
+), 
+T7
+);
+
+101 
+	}
+}
+
+103 
+	$´šŽn
+(
+M©rix
+ *
+thiz
+)
+
+105 
+cÞ
+ = 
+thiz
+->col;
+
+106 
+i
+ = 0; i < 
+thiz
+->
+row
+; i++) {
+
+107 
+j
+ = 0; j < 
+thiz
+->
+cÞ
+; j++) {
+
+108 
+	`´štf
+("%2g ", 
+	`PRIV
+(
+thiz
+)[
+i
+*
+cÞ
+ + 
+j
+]);
+
+110 
+	`´štf
+("\n");
+
+112 
+	`´štf
+("\n");
+
+113 
+	}
+}
+
+115 
+M©rixAlgo
+ 
+	gAvxM©rixProvid”
+ = {
+
+116 .
+ü—‹
+ = create,
+
+117 .
+	gassign
+ = 
+assign
+,
+
+118 .
+	gequ®
+ = 
+equ®
+,
+
+119 .
+	gŒª¥o£
+ = 
+avx_Œª¥o£
+,
+
+120 .
+	g´šŽn
+ = 
+´šŽn
+,
+
+	@impl/matrix.h
+
+1 #iâdeà
+MATRIX_H_
+
+
+2 
+	#MATRIX_H_
+
+
+	)
+
+4 
+	~<¡dboÞ.h
+>
+
+7 
+	#DECLARE_MATRIX
+(
+row
+, 
+cÞ
+) \
+
+8 ¡ruù { 
+v®ues
+[
+cÞ
+][
+row
+]; } 
+	tM©
+ ## 
+	trow
+ ## 
+	tx
+ ## 
+	tcÞ
+
+
+	)
+
+9 
+	tDECLARE_MATRIX
+(3, 3);
+
+10 
+DECLARE_MATRIX
+(4, 4);
+
+13 
+	mrow
+, 
+	mcÞ
+;
+
+14 *
+	m´iv
+;
+
+15 } 
+	tM©rix
+;
+
+18 
+	mM©rix
+* (*
+	mü—‹
+)(
+	mrow
+, 
+	mcÞ
+);
+
+19 (*
+	massign
+)(
+M©rix
+ *
+	mthiz
+, * 
+	md©a
+, 
+	md©a_size
+);
+
+20 
+boÞ
+ (*
+equ®
+)(cÚ¡ 
+M©rix
+ *
+	ml
+, cÚ¡ M©rix *
+	mr
+);
+
+21 (*
+	mŒª¥o£
+)(
+M©rix
+ *
+	md¡
+, cÚ¡ M©rix *
+	m¤c
+);
+
+22 (*
+	m´šŽn
+)(
+M©rix
+ *
+	mthiz
+);
+
+23 } 
+	tM©rixAlgo
+;
+
+26 
+M©rixAlgo
+ 
+NaiveM©rixProvid”
+;
+
+27 
+M©rixAlgo
+ 
+SSEM©rixProvid”
+;
+
+28 
+M©rixAlgo
+ 
+SSEP»ãtchM©rixProvid”
+;
+
+29 
+M©rixAlgo
+ 
+AvxM©rixProvid”
+;
+
+30 
+M©rixAlgo
+ 
+AvxP»ãtchM©rixProvid”
+;
+
+	@impl/naive_transpose.c
+
+1 
+	~"m©rix.h
+"
+
+2 
+	~<¡dio.h
+>
+
+3 
+	~<¡dlib.h
+>
+
+4 
+	~<as£¹.h
+>
+
+6 
+	#PRIV
+(
+x
+) \
+
+7 ((*è((
+x
+)->
+´iv
+))
+
+	)
+
+9 * 
+	$m©rix_®loc
+(
+row
+, 
+cÞ
+)
+
+11 *
+v®ues
+ = (*)
+	`ÿÎoc
+(
+row
+ * 
+cÞ
+, ());
+
+12  
+v®ues
+;
+
+13 
+	}
+}
+
+15 
+M©rix
+* 
+	$ü—‹
+(
+row
+, 
+cÞ
+)
+
+17 
+M©rix
+ *
+m©rix
+ = (M©rix*)
+	`m®loc
+((Matrix));
+
+18 
+m©rix
+->
+row
+ =„ow;
+
+19 
+m©rix
+->
+cÞ
+ = col;
+
+20 
+m©rix
+->
+´iv
+ = 
+	`m©rix_®loc
+(
+row
+, 
+cÞ
+);
+
+21  
+m©rix
+;
+
+22 
+	}
+}
+
+24 
+	$assign
+(
+M©rix
+ *
+thiz
+, * 
+d©a
+, 
+d©a_size
+)
+
+26 
+	`as£¹
+(
+thiz
+->
+row
+ *hiz->
+cÞ
+ =ð
+d©a_size
+ &&
+
+29 
+i
+ = 0; i < 
+thiz
+->
+row
+; i++)
+
+30 
+j
+ = 0; j < 
+thiz
+->
+cÞ
+; j++)
+
+31 
+	`PRIV
+(
+thiz
+)[
+i
+*thiz->
+cÞ
+ + 
+j
+] = 
+d©a
+[i*thiz->col + j];
+
+32 
+	}
+}
+
+34 
+boÞ
+ 
+	$equ®
+(cÚ¡ 
+M©rix
+ *
+l
+, cÚ¡ M©rix *
+r
+)
+
+36 cÚ¡ 
+•sžÚ
+ = 1 / 10000.0;
+
+38 
+	`as£¹
+(
+l
+->
+row
+ =ð
+r
+->row &&†->
+cÞ
+ ==„->col && "Matrix size is different");
+
+39 
+i
+ = 0; i < 
+l
+->
+row
+; i++)
+
+40 
+j
+ = 0; j < 
+l
+->
+cÞ
+; j++)
+
+41 ià(
+	`PRIV
+(
+l
+)[
+i
+ *†->
+cÞ
+ + 
+j
+] + 
+•sžÚ
+ < PRIV(
+r
+)[i *„->col + j] ||
+
+42 
+	`PRIV
+(
+r
+)[
+i
+ *„->
+cÞ
+ + 
+j
+] + 
+•sžÚ
+ < PRIV(
+l
+)[i *†->col + j])
+
+43  
+çl£
+;
+
+44  
+Œue
+;
+
+45 
+	}
+}
+
+47 
+	$Çive_Œª¥o£
+(
+M©rix
+ *
+d¡
+, cÚ¡ M©rix *
+¤c
+)
+
+49 
+	`as£¹
+(
+d¡
+->
+cÞ
+ =ð
+¤c
+->cÞ && d¡->
+row
+ == src->row
+
+52 
+i
+ = 0; i < 
+d¡
+->
+row
+; i++)
+
+53 
+j
+ = 0; j < 
+d¡
+->
+cÞ
+; j++)
+
+54 
+	`PRIV
+(
+d¡
+)[
+i
+*d¡->
+cÞ
+ + 
+j
+] = PRIV(
+¤c
+)[j*dst->col + i];
+
+55 
+	}
+}
+
+57 
+	$´šŽn
+(
+M©rix
+ *
+thiz
+)
+
+59 
+cÞ
+ = 
+thiz
+->col;
+
+60 
+i
+ = 0; i < 
+thiz
+->
+row
+; i++) {
+
+61 
+j
+ = 0; j < 
+thiz
+->
+cÞ
+; j++) {
+
+62 
+	`´štf
+("%5g ", 
+	`PRIV
+(
+thiz
+)[
+i
+*
+cÞ
+ + 
+j
+]);
+
+64 
+	`´štf
+("\n");
+
+66 
+	`´štf
+("\n");
+
+67 
+	}
+}
+
+69 
+M©rixAlgo
+ 
+	gNaiveM©rixProvid”
+ = {
+
+70 .
+ü—‹
+ = create,
+
+71 .
+	gassign
+ = 
+assign
+,
+
+72 .
+	gequ®
+ = 
+equ®
+,
+
+73 .
+	gŒª¥o£
+ = 
+Çive_Œª¥o£
+,
+
+74 .
+	g´šŽn
+ = 
+´šŽn
+,
+
+	@impl/sse_prefetch_transpose.c
+
+1 
+	~"m©rix.h
+"
+
+2 
+	~<¡dio.h
+>
+
+3 
+	~<¡dlib.h
+>
+
+4 
+	~<as£¹.h
+>
+
+5 
+	~<immšŒš.h
+>
+
+7 
+	#PRIV
+(
+x
+) \
+
+8 ((*è((
+x
+)->
+´iv
+))
+
+	)
+
+10 * 
+	$m©rix_®loc
+(
+row
+, 
+cÞ
+)
+
+12 *
+v®ues
+ = (*)
+	`ÿÎoc
+(
+row
+ * 
+cÞ
+, ());
+
+13  
+v®ues
+;
+
+14 
+	}
+}
+
+16 
+M©rix
+* 
+	$ü—‹
+(
+row
+, 
+cÞ
+)
+
+18 
+M©rix
+ *
+m©rix
+ = (M©rix*)
+	`m®loc
+((Matrix));
+
+19 
+m©rix
+->
+row
+ =„ow;
+
+20 
+m©rix
+->
+cÞ
+ = col;
+
+21 
+m©rix
+->
+´iv
+ = 
+	`m©rix_®loc
+(
+row
+, 
+cÞ
+);
+
+22  
+m©rix
+;
+
+23 
+	}
+}
+
+25 
+	$assign
+(
+M©rix
+ *
+thiz
+, * 
+d©a
+, 
+d©a_size
+)
+
+27 
+	`as£¹
+(
+thiz
+->
+row
+ *hiz->
+cÞ
+ =ð
+d©a_size
+ &&
+
+30 
+i
+ = 0; i < 
+thiz
+->
+row
+; i++)
+
+31 
+j
+ = 0; j < 
+thiz
+->
+cÞ
+; j++)
+
+32 
+	`PRIV
+(
+thiz
+)[
+i
+*thiz->
+cÞ
+ + 
+j
+] = 
+d©a
+[i*thiz->col + j];
+
+33 
+	}
+}
+
+35 
+boÞ
+ 
+	$equ®
+(cÚ¡ 
+M©rix
+ *
+l
+, cÚ¡ M©rix *
+r
+)
+
+37 cÚ¡ 
+•sžÚ
+ = 1 / 10000.0;
+
+39 
+	`as£¹
+(
+l
+->
+row
+ =ð
+r
+->row &&†->
+cÞ
+ ==„->col && "Matrix size is different");
+
+40 
+i
+ = 0; i < 
+l
+->
+row
+; i++)
+
+41 
+j
+ = 0; j < 
+l
+->
+cÞ
+; j++)
+
+42 ià(
+	`PRIV
+(
+l
+)[
+i
+ *†->
+cÞ
+ + 
+j
+] + 
+•sžÚ
+ < PRIV(
+r
+)[i *„->col + j] ||
+
+43 
+	`PRIV
+(
+r
+)[
+i
+ *„->
+cÞ
+ + 
+j
+] + 
+•sžÚ
+ < PRIV(
+l
+)[i *†->col + j])
+
+44  
+çl£
+;
+
+45  
+Œue
+;
+
+46 
+	}
+}
+
+48 
+	$s£_´eãtch_Œª¥o£
+(
+M©rix
+ *
+d¡
+, cÚ¡ M©rix *
+¤c
+)
+
+50 
+	`as£¹
+(
+d¡
+->
+cÞ
+ =ð
+¤c
+->cÞ && d¡->
+row
+ == src->row
+
+53 
+w
+ = 
+d¡
+->
+cÞ
+;
+
+54 
+h
+ = 
+d¡
+->
+row
+;
+
+56 
+x
+ = 0; x < 
+w
+; x += 4) {
+
+57 
+y
+ = 0; y < 
+h
+; y += 4) {
+
+58 
+	#PFDIST
+ 8
+
+	)
+
+59 
+	`_mm_´eãtch
+(
+¤c
+->
+´iv
+ +(
+y
+ + 
+PFDIST
+ + 0è*
+w
+ * 4 + 
+x
+*4, 
+_MM_HINT_T1
+);
+
+60 
+	`_mm_´eãtch
+(
+¤c
+->
+´iv
+ +(
+y
+ + 
+PFDIST
+ + 1è*
+w
+ * 4 + 
+x
+*4, 
+_MM_HINT_T1
+);
+
+61 
+	`_mm_´eãtch
+(
+¤c
+->
+´iv
+ +(
+y
+ + 
+PFDIST
+ + 2è*
+w
+ * 4 + 
+x
+*4, 
+_MM_HINT_T1
+);
+
+62 
+	`_mm_´eãtch
+(
+¤c
+->
+´iv
+ +(
+y
+ + 
+PFDIST
+ + 3è*
+w
+ * 4 + 
+x
+*4, 
+_MM_HINT_T1
+);
+
+64 
+__m128i
+ 
+I0
+ = 
+	`_mm_lßdu_si128
+ ((__m128˜*)(
+¤c
+->
+´iv
+ + (
+y
+ + 0è* 
+w
+ * 4 + 
+x
+*4));
+
+65 
+__m128i
+ 
+I1
+ = 
+	`_mm_lßdu_si128
+ ((__m128˜*)(
+¤c
+->
+´iv
+ + (
+y
+ + 1è* 
+w
+ * 4 + 
+x
+*4));
+
+66 
+__m128i
+ 
+I2
+ = 
+	`_mm_lßdu_si128
+ ((__m128˜*)(
+¤c
+->
+´iv
+ + (
+y
+ + 2è* 
+w
+ * 4 + 
+x
+*4));
+
+67 
+__m128i
+ 
+I3
+ = 
+	`_mm_lßdu_si128
+ ((__m128˜*)(
+¤c
+->
+´iv
+ + (
+y
+ + 3è* 
+w
+ * 4 + 
+x
+*4));
+
+68 
+__m128i
+ 
+T0
+ = 
+	`_mm_uÅacklo_•i32
+(
+I0
+, 
+I1
+);
+
+69 
+__m128i
+ 
+T1
+ = 
+	`_mm_uÅacklo_•i32
+(
+I2
+, 
+I3
+);
+
+70 
+__m128i
+ 
+T2
+ = 
+	`_mm_uÅackhi_•i32
+(
+I0
+, 
+I1
+);
+
+71 
+__m128i
+ 
+T3
+ = 
+	`_mm_uÅackhi_•i32
+(
+I2
+, 
+I3
+);
+
+72 
+I0
+ = 
+	`_mm_uÅacklo_•i64
+(
+T0
+, 
+T1
+);
+
+73 
+I1
+ = 
+	`_mm_uÅackhi_•i64
+(
+T0
+, 
+T1
+);
+
+74 
+I2
+ = 
+	`_mm_uÅacklo_•i64
+(
+T2
+, 
+T3
+);
+
+75 
+I3
+ = 
+	`_mm_uÅackhi_•i64
+(
+T2
+, 
+T3
+);
+
+76 
+	`_mm_¡Üeu_si128
+((
+__m128i
+ *)(
+d¡
+->
+´iv
+ + ((
+x
+ + 0è* 
+h
+ * 4è+ 
+y
+*4), 
+I0
+);
+
+77 
+	`_mm_¡Üeu_si128
+((
+__m128i
+ *)(
+d¡
+->
+´iv
+ + ((
+x
+ + 1è* 
+h
+ * 4è+ 
+y
+*4), 
+I1
+);
+
+78 
+	`_mm_¡Üeu_si128
+((
+__m128i
+ *)(
+d¡
+->
+´iv
+ + ((
+x
+ + 2è* 
+h
+ * 4è+ 
+y
+*4), 
+I2
+);
+
+79 
+	`_mm_¡Üeu_si128
+((
+__m128i
+ *)(
+d¡
+->
+´iv
+ + ((
+x
+ + 3è* 
+h
+ * 4è+ 
+y
+*4), 
+I3
+);
+
+82 
+	}
+}
+
+84 
+	$´šŽn
+(
+M©rix
+ *
+thiz
+)
+
+86 
+cÞ
+ = 
+thiz
+->col;
+
+87 
+i
+ = 0; i < 
+thiz
+->
+row
+; i++) {
+
+88 
+j
+ = 0; j < 
+thiz
+->
+cÞ
+; j++) {
+
+89 
+	`´štf
+("%5g ", 
+	`PRIV
+(
+thiz
+)[
+i
+*
+cÞ
+ + 
+j
+]);
+
+91 
+	`´štf
+("\n");
+
+93 
+	`´štf
+("\n");
+
+94 
+	}
+}
+
+96 
+M©rixAlgo
+ 
+	gSSEP»ãtchM©rixProvid”
+ = {
+
+97 .
+ü—‹
+ = create,
+
+98 .
+	gassign
+ = 
+assign
+,
+
+99 .
+	gequ®
+ = 
+equ®
+,
+
+100 .
+	gŒª¥o£
+ = 
+s£_´eãtch_Œª¥o£
+,
+
+101 .
+	g´šŽn
+ = 
+´šŽn
+,
+
+	@impl/sse_transpose.c
+
+1 
+	~"m©rix.h
+"
+
+2 
+	~<¡dio.h
+>
+
+3 
+	~<¡dlib.h
+>
+
+4 
+	~<as£¹.h
+>
+
+5 
+	~<immšŒš.h
+>
+
+7 
+	#PRIV
+(
+x
+) \
+
+8 ((*è((
+x
+)->
+´iv
+))
+
+	)
+
+10 * 
+	$m©rix_®loc
+(
+row
+, 
+cÞ
+)
+
+12 *
+v®ues
+ = (*)
+	`ÿÎoc
+(
+row
+ * 
+cÞ
+, ());
+
+13  
+v®ues
+;
+
+14 
+	}
+}
+
+16 
+M©rix
+* 
+	$ü—‹
+(
+row
+, 
+cÞ
+)
+
+18 
+M©rix
+ *
+m©rix
+ = (M©rix*)
+	`m®loc
+((Matrix));
+
+19 
+m©rix
+->
+row
+ =„ow;
+
+20 
+m©rix
+->
+cÞ
+ = col;
+
+21 
+m©rix
+->
+´iv
+ = 
+	`m©rix_®loc
+(
+row
+, 
+cÞ
+);
+
+22  
+m©rix
+;
+
+23 
+	}
+}
+
+25 
+	$assign
+(
+M©rix
+ *
+thiz
+, * 
+d©a
+, 
+d©a_size
+)
+
+27 
+	`as£¹
+(
+thiz
+->
+row
+ *hiz->
+cÞ
+ =ð
+d©a_size
+ &&
+
+30 
+i
+ = 0; i < 
+thiz
+->
+row
+; i++)
+
+31 
+j
+ = 0; j < 
+thiz
+->
+cÞ
+; j++)
+
+32 
+	`PRIV
+(
+thiz
+)[
+i
+*thiz->
+cÞ
+ + 
+j
+] = 
+d©a
+[i*thiz->col + j];
+
+33 
+	}
+}
+
+35 
+boÞ
+ 
+	$equ®
+(cÚ¡ 
+M©rix
+ *
+l
+, cÚ¡ M©rix *
+r
+)
+
+37 cÚ¡ 
+•sžÚ
+ = 1 / 10000.0;
+
+39 
+	`as£¹
+(
+l
+->
+row
+ =ð
+r
+->row &&†->
+cÞ
+ ==„->col && "Matrix size is different");
+
+40 
+i
+ = 0; i < 
+l
+->
+row
+; i++)
+
+41 
+j
+ = 0; j < 
+l
+->
+cÞ
+; j++)
+
+42 ià(
+	`PRIV
+(
+l
+)[
+i
+ *†->
+cÞ
+ + 
+j
+] + 
+•sžÚ
+ < PRIV(
+r
+)[i *„->col + j] ||
+
+43 
+	`PRIV
+(
+r
+)[
+i
+ *„->
+cÞ
+ + 
+j
+] + 
+•sžÚ
+ < PRIV(
+l
+)[i *†->col + j])
+
+44  
+çl£
+;
+
+45  
+Œue
+;
+
+46 
+	}
+}
+
+48 
+	$s£_Œª¥o£
+(
+M©rix
+ *
+d¡
+, cÚ¡ M©rix *
+¤c
+)
+
+50 
+	`as£¹
+(
+d¡
+->
+cÞ
+ =ð
+¤c
+->cÞ && d¡->
+row
+ == src->row
+
+53 
+w
+ = 
+d¡
+->
+cÞ
+;
+
+54 
+h
+ = 
+d¡
+->
+row
+;
+
+56 
+x
+ = 0; x < 
+w
+; x += 4) {
+
+57 
+y
+ = 0; y < 
+h
+; y += 4) {
+
+58 
+__m128i
+ 
+I0
+ = 
+	`_mm_lßdu_si128
+((__m128˜*)(
+¤c
+->
+´iv
+ + (
+y
+ + 0è* 
+w
+ * 4 + 
+x
+*4));
+
+59 
+__m128i
+ 
+I1
+ = 
+	`_mm_lßdu_si128
+((__m128˜*)(
+¤c
+->
+´iv
+ + (
+y
+ + 1è* 
+w
+ * 4 + 
+x
+*4));
+
+60 
+__m128i
+ 
+I2
+ = 
+	`_mm_lßdu_si128
+((__m128˜*)(
+¤c
+->
+´iv
+ + (
+y
+ + 2è* 
+w
+ * 4 + 
+x
+*4));
+
+61 
+__m128i
+ 
+I3
+ = 
+	`_mm_lßdu_si128
+((__m128˜*)(
+¤c
+->
+´iv
+ + (
+y
+ + 3è* 
+w
+ * 4 + 
+x
+*4));
+
+62 
+__m128i
+ 
+T0
+ = 
+	`_mm_uÅacklo_•i32
+(
+I0
+, 
+I1
+);
+
+63 
+__m128i
+ 
+T1
+ = 
+	`_mm_uÅacklo_•i32
+(
+I2
+, 
+I3
+);
+
+64 
+__m128i
+ 
+T2
+ = 
+	`_mm_uÅackhi_•i32
+(
+I0
+, 
+I1
+);
+
+65 
+__m128i
+ 
+T3
+ = 
+	`_mm_uÅackhi_•i32
+(
+I2
+, 
+I3
+);
+
+66 
+I0
+ = 
+	`_mm_uÅacklo_•i64
+(
+T0
+, 
+T1
+);
+
+67 
+I1
+ = 
+	`_mm_uÅackhi_•i64
+(
+T0
+, 
+T1
+);
+
+68 
+I2
+ = 
+	`_mm_uÅacklo_•i64
+(
+T2
+, 
+T3
+);
+
+69 
+I3
+ = 
+	`_mm_uÅackhi_•i64
+(
+T2
+, 
+T3
+);
+
+70 
+	`_mm_¡Üeu_si128
+((
+__m128i
+ *)(
+d¡
+->
+´iv
+ + ((
+x
+ + 0è* 
+h
+ * 4è+ 
+y
+ * 4), 
+I0
+);
+
+71 
+	`_mm_¡Üeu_si128
+((
+__m128i
+ *)(
+d¡
+->
+´iv
+ + ((
+x
+ + 1è* 
+h
+ * 4è+ 
+y
+ * 4), 
+I1
+);
+
+72 
+	`_mm_¡Üeu_si128
+((
+__m128i
+ *)(
+d¡
+->
+´iv
+ + ((
+x
+ + 2è* 
+h
+ * 4è+ 
+y
+ * 4), 
+I2
+);
+
+73 
+	`_mm_¡Üeu_si128
+((
+__m128i
+ *)(
+d¡
+->
+´iv
+ + ((
+x
+ + 3è* 
+h
+ * 4è+ 
+y
+ * 4), 
+I3
+);
+
+76 
+	}
+}
+
+78 
+	$´šŽn
+(
+M©rix
+ *
+thiz
+)
+
+80 
+cÞ
+ = 
+thiz
+->col;
+
+81 
+i
+ = 0; i < 
+thiz
+->
+row
+; i++) {
+
+82 
+j
+ = 0; j < 
+thiz
+->
+cÞ
+; j++) {
+
+83 
+	`´štf
+("%5g ", 
+	`PRIV
+(
+thiz
+)[
+i
+*
+cÞ
+ + 
+j
+]);
+
+85 
+	`´štf
+("\n");
+
+87 
+	`´štf
+("\n");
+
+88 
+	}
+}
+
+90 
+M©rixAlgo
+ 
+	gSSEM©rixProvid”
+ = {
+
+91 .
+ü—‹
+ = create,
+
+92 .
+	gassign
+ = 
+assign
+,
+
+93 .
+	gequ®
+ = 
+equ®
+,
+
+94 .
+	gŒª¥o£
+ = 
+s£_Œª¥o£
+,
+
+95 .
+	g´šŽn
+ = 
+´šŽn
+,
+
+	@impl/stopwatch.c
+
+1 
+	~<¡dboÞ.h
+>
+
+2 
+	~<¡dlib.h
+>
+
+3 
+	~<time.h
+>
+
+5 
+	~"¡Ýw©ch.h
+"
+
+7 
+	sStÝw©chIÁ”Çl
+ {
+
+8 
+boÞ
+ 
+	mruÂšg
+;
+
+9 
+time¥ec
+ 
+	mÏ¡_time
+;
+
+10 
+time¥ec
+ 
+	mtÙ®
+;
+
+13 
+time¥ec
+ 
+	$þock_time
+()
+
+15 
+time¥ec
+ 
+time_now
+;
+
+16 
+	`þock_g‘time
+(
+CLOCK_REALTIME
+, &
+time_now
+);
+
+17  
+time_now
+;
+
+18 
+	}
+}
+
+20 
+time¥ec
+ 
+	$time_diff
+(
+time¥ec
+ 
+t1
+, time¥eø
+t2
+)
+
+22 
+time¥ec
+ 
+diff
+;
+
+23 ià(
+t2
+.
+tv_n£c
+ - 
+t1
+.tv_nsec < 0) {
+
+24 
+diff
+.
+tv_£c
+ = 
+t2
+.tv_£ø- 
+t1
+.tv_sec - 1;
+
+25 
+diff
+.
+tv_n£c
+ = 
+t2
+.tv_n£ø- 
+t1
+.tv_nsec + 1000000000;
+
+27 
+diff
+.
+tv_£c
+ = 
+t2
+.tv_£ø- 
+t1
+.tv_sec;
+
+28 
+diff
+.
+tv_n£c
+ = 
+t2
+.tv_n£ø- 
+t1
+.tv_nsec;
+
+30  
+diff
+;
+
+31 
+	}
+}
+
+33 
+time¥ec
+ 
+	$time_add
+(
+time¥ec
+ 
+t1
+, time¥eø
+t2
+)
+
+35 
+£c
+ = 
+t2
+.
+tv_£c
+ + 
+t1
+.tv_sec;
+
+36 
+n£c
+ = 
+t2
+.
+tv_n£c
+ + 
+t1
+.tv_nsec;
+
+37 ià(
+n£c
+ >= 1000000000) {
+
+38 
+n£c
+ -= 1000000000;
+
+39 
+£c
+++;
+
+41  (
+time¥ec
+) {
+
+42 .
+tv_£c
+ = 
+£c
+, .
+tv_n£c
+ = 
+n£c
+
+
+44 
+	}
+}
+
+46 
+	$»£t
+(
+w©ch_p
+ 
+Q
+)
+
+48 
+Q
+->
+ruÂšg
+ = 
+çl£
+;
+
+49 
+Q
+->
+Ï¡_time
+ = (
+time¥ec
+) {
+
+52 
+Q
+->
+tÙ®
+ = (
+time¥ec
+) {
+
+55 
+	}
+}
+
+57 
+w©ch_p
+ 
+	$ü—‹_þock
+()
+
+59 
+w©ch_p
+ 
+S
+ = 
+	`m®loc
+((
+StÝw©chIÁ”Çl
+));
+
+60 ià(!
+S
+)
+
+61  
+NULL
+;
+
+63 
+	`»£t
+(
+S
+);
+
+64  
+S
+;
+
+65 
+	}
+}
+
+67 
+	$de¡roy
+(
+w©ch_p
+ 
+S
+)
+
+69 
+	`ä“
+(
+S
+);
+
+70 
+	}
+}
+
+72 
+	$¡¬t
+(
+w©ch_p
+ 
+Q
+)
+
+74 ià(!(
+Q
+->
+ruÂšg
+)) {
+
+75 
+Q
+->
+ruÂšg
+ = 
+Œue
+;
+
+76 
+Q
+->
+tÙ®
+ = (
+time¥ec
+) {
+
+79 
+Q
+->
+Ï¡_time
+ = 
+	`þock_time
+();
+
+81 
+	}
+}
+
+83 
+	$¡Ý
+(
+w©ch_p
+ 
+Q
+)
+
+85 ià(
+Q
+->
+ruÂšg
+) {
+
+86 
+Q
+->
+tÙ®
+ = 
+	`time_add
+(Q->tÙ®, 
+	`time_diff
+((Q->
+Ï¡_time
+), 
+	`þock_time
+()));
+
+87 
+Q
+->
+ruÂšg
+ = 
+çl£
+;
+
+89 
+	}
+}
+
+91 
+	$»ad
+(
+w©ch_p
+ 
+Q
+)
+
+93 ià(
+Q
+->
+ruÂšg
+) {
+
+94 
+time¥ec
+ 
+t
+ = 
+	`þock_time
+();
+
+95 
+Q
+->
+tÙ®
+ = 
+	`time_add
+(Q->tÙ®, 
+	`time_diff
+(Q->
+Ï¡_time
+, 
+t
+));
+
+96 
+Q
+->
+Ï¡_time
+ = 
+t
+;
+
+98  (
+Q
+->
+tÙ®
+.
+tv_£c
+ * 1000000.0 + Q->tÙ®.
+tv_n£c
+ / 1000.0);
+
+99 
+	}
+}
+
+102 
+__STOPWATCH_API__
+ 
+	gStÝw©ch
+ = {
+
+103 .
+ü—‹
+ = 
+ü—‹_þock
+,
+
+104 .
+	gde¡roy
+ = 
+de¡roy
+,
+
+105 .
+	g¡¬t
+ = 
+¡¬t
+,
+
+106 .
+	g¡Ý
+ = 
+¡Ý
+,
+
+107 .
+	g»£t
+ = 
+»£t
+,
+
+108 .
+	g»ad
+ = 
+»ad
+,
+
+	@impl/stopwatch.h
+
+1 #iâdeà
+STOPWATCH_H_
+
+
+2 
+	#STOPWATCH_H_
+
+
+	)
+
+4 
+StÝw©chIÁ”Çl
+ *
+	tw©ch_p
+;
+
+6 
+	s__STOPWATCH_API__
+ {
+
+7 
+w©ch_p
+ (*
+ü—‹
+)();
+
+8 (*
+de¡roy
+)(
+w©ch_p
+);
+
+9 (*
+¡¬t
+)(
+w©ch_p
+);
+
+10 (*
+¡Ý
+)(
+w©ch_p
+);
+
+11 (*
+»£t
+)(
+w©ch_p
+);
+
+12 (*
+»ad
+)(
+w©ch_p
+);
+
+13 } 
+StÝw©ch
+;
+
+	@tests/test_matrix.c
+
+1 
+	~<¡dio.h
+>
+
+2 
+	~<¡dlib.h
+>
+
+3 
+	~<time.h
+>
+
+4 
+	~<sys/time.h
+>
+
+5 
+	~<¡ršg.h
+>
+
+6 
+	~<m®loc.h
+>
+
+7 
+	~<as£¹.h
+>
+
+13 
+	~"../im¶/m©rix.h
+"
+
+14 
+	~"../im¶/¡Ýw©ch.h
+"
+
+16 
+M©rixAlgo
+ *
+	gm©rix_´ovid”s
+[] = {
+
+17 &
+NaiveM©rixProvid”
+,
+
+18 &
+SSEM©rixProvid”
+,
+
+19 &
+SSEP»ãtchM©rixProvid”
+,
+
+20 &
+AvxM©rixProvid”
+,
+
+21 &
+AvxP»ãtchM©rixProvid”
+
+
+28 #iâdeà
+ARRAY_SIZE_I
+
+
+29 
+	#ARRAY_SIZE_I
+ 0
+
+	)
+
+32 
+	$maš
+()
+
+34 
+TEST_W
+ = 4096 + 
+ARRAY_SIZE_I
+ * 64;
+
+35 
+TEST_H
+ = 4096 + 
+ARRAY_SIZE_I
+ * 64;
+
+38 #ifdeà
+avx_´eãtch
+
+
+39 
+M©rixAlgo
+ *
+®go
+ = 
+m©rix_´ovid”s
+[4];
+
+40 #–ià
+avx
+
+
+41 
+M©rixAlgo
+ *
+®go
+ = 
+m©rix_´ovid”s
+[3];
+
+42 #–ià
+s£_´eãtch
+
+
+43 
+M©rixAlgo
+ *
+®go
+ = 
+m©rix_´ovid”s
+[2];
+
+44 #–ià
+s£
+
+
+45 
+M©rixAlgo
+ *
+®go
+ = 
+m©rix_´ovid”s
+[1];
+
+47 
+M©rixAlgo
+ *
+®go
+ = 
+m©rix_´ovid”s
+[0];
+
+52 
+‹¡š
+[4][4] = {
+
+59 
+ex³ùed
+[4][4] = {
+
+66 
+‹¡š_size
+ = (
+‹¡š
+) / (testin[0][0]);
+
+67 
+ex³ùed_size
+ = (
+ex³ùed
+) / (expected[0][0]);
+
+69 
+M©rix
+ *
+m©rix
+, *
+ªs
+, *
+ex³ù
+;
+
+72 
+ex³ù
+ = 
+®go
+->
+	`ü—‹
+(4, 4);
+
+73 
+®go
+->
+	`assign
+(
+ex³ù
+, *
+ex³ùed
+, 
+ex³ùed_size
+);
+
+76 
+ªs
+ = 
+®go
+->
+	`ü—‹
+(4, 4);
+
+77 
+m©rix
+ = 
+®go
+->
+	`ü—‹
+(4, 4);
+
+78 
+®go
+->
+	`assign
+(
+m©rix
+, *
+‹¡š
+, 
+‹¡š_size
+);
+
+81 
+®go
+->
+	`Œª¥o£
+(
+ªs
+,
+m©rix
+);
+
+84 
+	`as£¹
+(1 =ð
+®go
+->
+	`equ®
+(
+ªs
+, 
+ex³ù
+) &&
+
+90 
+‹¡š
+[8][8] = {
+
+101 
+ex³ùed
+[8][8] = {
+
+112 
+‹¡š_size
+ = (
+‹¡š
+) / (testin[0][0]);
+
+113 
+ex³ùed_size
+ = (
+ex³ùed
+) / (expected[0][0]);
+
+115 
+M©rix
+ *
+m©rix
+, *
+ªs
+, *
+ex³ù
+;
+
+118 
+ex³ù
+ = 
+®go
+->
+	`ü—‹
+(8, 8);
+
+119 
+®go
+->
+	`assign
+(
+ex³ù
+, *
+ex³ùed
+, 
+ex³ùed_size
+);
+
+122 
+ªs
+ = 
+®go
+->
+	`ü—‹
+(8, 8);
+
+123 
+m©rix
+ = 
+®go
+->
+	`ü—‹
+(8, 8);
+
+124 
+®go
+->
+	`assign
+(
+m©rix
+, *
+‹¡š
+, 
+‹¡š_size
+);
+
+127 
+®go
+->
+	`Œª¥o£
+(
+ªs
+,
+m©rix
+);
+
+130 
+	`as£¹
+(1 =ð
+®go
+->
+	`equ®
+(
+ªs
+, 
+ex³ù
+) &&
+
+136 *
+¤c
+ = (*è
+	`m®loc
+((è* 
+TEST_W
+ * 
+TEST_H
+);
+
+138 
+	`¤ªd
+(
+	`time
+(
+NULL
+));
+
+139 
+i
+ = 0; i < 
+TEST_H
+; ++i) {
+
+140 
+j
+ = 0; j < 
+TEST_W
+; ++j) {
+
+141 
+¤c
+[
+i
+ * 
+TEST_W
+ + 
+j
+] = 
+	`¿nd
+();
+
+145 
+¤c_size
+ = 
+TEST_W
+ * 
+TEST_H
+;
+
+147 
+M©rix
+ *
+ªs
+, *
+m©rix
+;
+
+150 
+ªs
+ = 
+®go
+->
+	`ü—‹
+(
+TEST_W
+, 
+TEST_H
+);
+
+151 
+m©rix
+ = 
+®go
+->
+	`ü—‹
+(
+TEST_W
+, 
+TEST_H
+);
+
+152 
+®go
+->
+	`assign
+(
+m©rix
+, 
+¤c
+, 
+¤c_size
+);
+
+155 
+w©ch_p
+ 
+ùx
+ = 
+StÝw©ch
+.
+	`ü—‹
+();
+
+156 
+	`as£¹
+(
+ùx
+ && "Clock setup fail!");
+
+159 
+StÝw©ch
+.
+	`¡¬t
+(
+ùx
+);
+
+160 
+®go
+->
+	`Œª¥o£
+(
+ªs
+, 
+m©rix
+);
+
+161 
+now
+ = 
+StÝw©ch
+.
+	`»ad
+(
+ùx
+);
+
+164 
+	`´štf
+("%g\n", 
+now
+);
+
+165 
+StÝw©ch
+.
+	`de¡roy
+(
+ùx
+);
+
+169 
+	}
+}
+
+	@
+1
+.
+0
+9
+193
+impl/avx_prefetch_transpose.c
+impl/avx_transpose.c
+impl/matrix.h
+impl/naive_transpose.c
+impl/sse_prefetch_transpose.c
+impl/sse_transpose.c
+impl/stopwatch.c
+impl/stopwatch.h
+tests/test_matrix.c
