@@ -18,6 +18,7 @@ MatrixAlgo *matrix_providers[] = {
     &SSEMatrixProvider,
     &SSEPrefetchMatrixProvider,
     &AvxMatrixProvider,
+    &AvxSetMatrixProvider,
     &AvxPrefetchMatrixProvider
 };
 
@@ -36,6 +37,8 @@ int main()
 
     /* Matrix algorithm declaration */
 #ifdef avx_prefetch
+    MatrixAlgo *algo = matrix_providers[5];
+#elif avx_set
     MatrixAlgo *algo = matrix_providers[4];
 #elif avx
     MatrixAlgo *algo = matrix_providers[3];

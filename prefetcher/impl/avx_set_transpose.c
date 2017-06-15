@@ -133,8 +133,8 @@ static void avx_set_transpose(Matrix *dst, const Matrix *src)
             I1 = _mm256_unpackhi_epi64(T0, T1);
             I2 = _mm256_unpacklo_epi64(T2, T3);
             I3 = _mm256_unpackhi_epi64(T2, T3);
-            I4 = _mm256_unpacklo_epi64(T4, T4);
-            I5 = _mm256_unpackhi_epi64(T4, T4);
+            I4 = _mm256_unpacklo_epi64(T4, T5);
+            I5 = _mm256_unpackhi_epi64(T4, T5);
             I6 = _mm256_unpacklo_epi64(T6, T7);
             I7 = _mm256_unpackhi_epi64(T6, T7);
 
@@ -143,10 +143,10 @@ static void avx_set_transpose(Matrix *dst, const Matrix *src)
             T1 = _mm256_permute2x128_si256(I1, I5, 0x20);
             T2 = _mm256_permute2x128_si256(I2, I6, 0x20);
             T3 = _mm256_permute2x128_si256(I3, I7, 0x20);
-            T4 = _mm256_permute2x128_si256(I4, I4, 0x31);
-            T5 = _mm256_permute2x128_si256(I5, I5, 0x31);
-            T6 = _mm256_permute2x128_si256(I6, I6, 0x31);
-            T7 = _mm256_permute2x128_si256(I7, I7, 0x31);
+            T4 = _mm256_permute2x128_si256(I0, I4, 0x31);
+            T5 = _mm256_permute2x128_si256(I1, I5, 0x31);
+            T6 = _mm256_permute2x128_si256(I2, I6, 0x31);
+            T7 = _mm256_permute2x128_si256(I3, I7, 0x31);
 
             _mm256_storeu_si256((__m256i *)(PRIV(dst) + ((x + 0) * h) + y), T0);
             _mm256_storeu_si256((__m256i *)(PRIV(dst) + ((x + 1) * h) + y), T1);
